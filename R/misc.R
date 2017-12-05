@@ -60,9 +60,57 @@ matrix_pow <- function(x, n){
 #' @export
 ht <- function(x) Conj(t(x))
 
+
+#' check if tho matrix have same dimensions (nrow, ncol)
+#'
+#' check if tho matrix have same dimensions (nrow, ncol)
+#' 
+#' @param x the first matrix
+#' @param y the second matrix
+#' @export
+same_dimensions <- function(x, y){
+    all(dim(x) == dim(y))
+}
+
+
 #' check (matrix) equality in a safe manner
 #'
 #' check equality in safe manner
 #' @param ... arguments to be tested
+#' @param x the first matrix
+#' @param y the second matrix
 #' @export
-all_equal <- function(...) isTRUE(all.equal(...))
+equal_matrix <- function(x, y) {
+    same_dimensions(x, y) && isTRUE(all.equal(x, y))
+}
+
+#' check if a matrix is symmetric
+#'
+#' check if a matrix is symmetric
+#' @param x the matrix
+#' @export
+is.symmetric <- function(x) equal_matrix(x, t(x))
+
+
+#' check if a matrix is hermitian
+#'
+#' check if a matrix is hermitian
+#' @param x the matrix
+#' @export
+is.hermitian <- function(x) equal_matrix(x, ht(x))
+
+
+#' check if a matrix is antisymmetric
+#'
+#' check if a matrix is antisymmetric
+#' @param x the matrix
+#' @export
+is.antisymmetric <- function(x) equal_matrix(x, - t(x))
+
+
+#' check if a matrix is antihermitian
+#'
+#' check if a matrix is antihermitian
+#' @param x the matrix
+#' @export
+is.antihermitian <- function(x) equal_matrix(x, - ht(x))
