@@ -4,8 +4,8 @@
 \alias{elematrix}
 \title{Elementary matrix generation}
 \usage{
-elematrix(n = stop("n must be specified"), i = stop("i must be specified"),
-  j = NULL, alpha = NULL)
+elematrix(n = stop("n must be specified"),
+  i = stop("i must be specified"), j = NULL, alpha = NULL)
 }
 \arguments{
 \item{n}{dimnension of the square matrix}
